@@ -1,11 +1,13 @@
 package server
 
 import (
-	"github.com/go-chi/chi/v5"
-	"github.com/go-chi/chi/v5/middleware"
+	"github.com/gin-gonic/gin"
 )
 
 func (s *Server) RegisterRoutes() {
-	mux := chi.NewRouter()
-	mux.Use(middleware.Logger)
+	s.mux = gin.Default()
+	s.mux.LoadHTMLGlob("views/*")
+	s.mux.GET("/", func(c *gin.Context) {
+		c.HTML(200, "index.html", gin.H{})
+	})
 }
