@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
+import "github.com/tiagoinaba/hackbarao/server"
 
 func main() {
-	fmt.Println("hello world")
+	s := server.New()
+
+	s.RegisterRoutes()
 }
